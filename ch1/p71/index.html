@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="invoices.js"></script>
+    <script type="text/javascript" src="plays.js"></script>
+    <script type="text/javascript" src="statement.js"></script>
+    <script>
+      console.log(invoice)
+      console.log(plays)
+      var result = statement(invoice, plays)
+      console.log(result)
+    </script>
+    <title>Index</title>
+  </head>
+  <body>
+    <div id="test">Hello</div>
+    <script>
+      document.getElementById('test').innerHTML = result
+    </script>
+  </body>
+</html>
