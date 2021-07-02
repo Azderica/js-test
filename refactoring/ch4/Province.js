@@ -1,4 +1,4 @@
-class Province {
+module.exports = class Province {
   constructor(doc) {
     this._name = doc.name
     this._producers = []
@@ -41,7 +41,7 @@ class Province {
     return this._price
   }
 
-  get price(arg) {
+  set price(arg) {
     this._price = parseInt(arg)
   }
 
