@@ -2,22 +2,67 @@ const Province = require('./Province.js')
 const sampleProvinceData = require('./Data.js')
 
 var assert = require('assert')
+var chai = require('chai')
+var expect = chai.expect
 
 describe('province', function () {
+  let asia
+  beforeEach(function () {
+    asia = new Province(sampleProvinceData())
+  })
+
   it('shortfall', function () {
-    const asia = new Province(sampleProvinceData())
-    assert.equal(asia.shortfall, 5)
+    expect(asia.shortfall).equal(5)
   })
 
   it('profit', function () {
-    const asia = new Province(sampleProvinceData())
-    assert.equal(asia.profit, 230)
+    expect(asia.profit).equal(230)
   })
 
   it('change production', function () {
-    const asia = new Province(sampleProvinceData())
     asia.producers[0].production = 20
-    assert.equal(asia.shortfall, -6)
-    assert.equal(asia.profit, 292)
+    expect(asia.shortfall).equal(-6)
+    expect(asia.profit).equal(292)
+  })
+
+  it('zero demand', function () {
+    asia.demand = 0
+    expect(asia.shortfall).equal(-25)
+    expect(asia.profit).equal(0)
+  })
+
+  it('negative demand', function () {
+    asia.demand = -1
+    expect(asia.shortfall).equal(-26)
+    expect(asia.profit).equal(-10)
+  })
+
+  it('empty string demand', function () {
+    const asia = new Province(sampleProvinceData())
+    asia.demand = ''
+    expect(asia.shortfall).NaN
+    expect(asia.profit).NaN
+  })
+})
+
+describe('no producer', function () {
+  // 생산자가 없는 경우
+  let noProducers
+  beforeEach(function () {
+    const data = {
+      name: 'No producers',
+      producers: [],
+      demand: 30,
+      price: 20,
+    }
+    noProducers = new Province(data)
+  })
+
+  it('shortfall', function () {
+    assert.equal(noProducers.shortfall, 30)
+  })
+
+  it('profit', function () {
+    assert.equal(noProducers.profit, 0)
   })
 })
