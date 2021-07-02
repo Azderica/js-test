@@ -1,9 +1,9 @@
 const Province = require('./Province.js')
 const sampleProvinceData = require('./Data.js')
 
-var assert = require('assert')
 var chai = require('chai')
 var expect = chai.expect
+var assert = chai.assert
 
 describe('province', function () {
   let asia
@@ -64,5 +64,18 @@ describe('no producer', function () {
 
   it('profit', function () {
     assert.equal(noProducers.profit, 0)
+  })
+})
+
+describe('string for producers', function () {
+  it('', function () {
+    const data = {
+      name: 'String producers',
+      producers: '',
+      demand: 30,
+      price: 20,
+    }
+    const prov = new Province(data)
+    expect(prov.shortfall).equal(0)
   })
 })
