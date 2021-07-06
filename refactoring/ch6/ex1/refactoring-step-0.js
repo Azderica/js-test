@@ -1,4 +1,4 @@
-function prinOwing(invoice) {
+function printOwing(invoice) {
   printBanner()
   let outstanding = calculateOutstanding()
   printDetails(outstanding)
