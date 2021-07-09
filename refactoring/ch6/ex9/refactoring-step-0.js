@@ -1,6 +1,11 @@
 // before
-let basePrice = anOrder.basePrice
-return basePrice > 1000
+function base(aReading) {}
+function taxableCharge(aReading) {}
+function calculateBaseCharge(aReading) {}
 
 // after
-return anOrder.basePrice > 1000
+class Reading {
+  base() {}
+  taxableCharge() {}
+  calculateBaseCharge() {}
+}
