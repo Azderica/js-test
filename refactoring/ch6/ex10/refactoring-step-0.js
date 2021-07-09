@@ -1,6 +1,11 @@
 // before
-let basePrice = anOrder.basePrice
-return basePrice > 1000
+function base(aReading) {}
+function taxableCharge(aReading) {}
 
 // after
-return anOrder.basePrice > 1000
+function enrichReading(argReading) {
+  const aReading = _.cloneDeep(argReading)
+  aReading.baseCharge = base(aReading)
+  aReading.taxableCharge = taxableCharge(aReading)
+  return aReading
+}
