@@ -2,6 +2,9 @@ class CustomerData {
   constructor(data) {
     this._data = data
   }
+  usage(customerID, year, month) {
+    return this._data[customerID].usages[year][month]
+  }
   setUsage(customerID, year, month, amount) {
     getRawDataOfCustomers()[customerID].usages[year][month] = amount
   }
@@ -23,10 +26,8 @@ function setRawDataOfCustomers(arg) {
 getCustomerData().setUsage(customerID, year, month, amount)
 
 // 읽기 예
-function compareUsage(customerID, lateYear, month) {
-  const later = getRawDataOfCustomers()[customerID].usages[lateYear][month]
-  const earlier = getRawDataOfCustomers()[customerID].usages[lateYear - 1][
-    month
-  ]
+function compareUsage(customerID, laterYear, month) {
+  const later = getCustomerData().usage(customerID, laterYear, month)
+  const earlier = getCustomerData().usage(customerID, laterYear - 1, month)
   return { laterAmount: later, charge: later - earlier }
 }

@@ -2,8 +2,8 @@
 customerData[customerID].usages[year][month] = amount
 
 // 읽기 예
-function compareUsage(customerID, lateYear, month) {
-  const later = customerData[customerID].usages[lateYear][month]
-  const earlier = customerData[customerID].usages[lateYear - 1][month]
+function compareUsage(customerID, laterYear, month) {
+  const later = customerData[customerID].usages[laterYear][month]
+  const earlier = customerData[customerID].usages[laterYear - 1][month]
   return { laterAmount: later, charge: later - earlier }
 }
